@@ -1,11 +1,15 @@
 package com.qa.opencart.factory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -54,24 +58,80 @@ public class DriverFactory {
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
+
 	/**
 	 * 
 	 * @return properties reference with all config properties
 	 */
 	public Properties initprop() {
 		prop = new Properties();
+		FileInputStream ip = null;
+
+		// commnd line args --> maven
+		// mvn clean install -Denv="stage" -Dbrowser="chrome"
+		// mvn clean install
+
+		String envName = System.getProperty("env");
+		// String envName = System.getenv("env");
+		System.out.println("Running test cases on environment: " + envName);
+
+		if (envName == null) {
+			System.out.println("No env is given...hence running it on QA env by default....");
+			try {
+				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		else {
+			try {
+				switch (envName.toLowerCase()) {
+				case "qa":
+					ip = new FileInputStream("./src/test/resources/config/Qa.config.properties");
+					break;
+				case "stage":
+					ip = new FileInputStream("./src/test/resources/config/Stage.config.properties");
+					break;
+				case "dev":
+					ip = new FileInputStream("./src/test/resources/config/Dev.config.properties");
+					break;
+				case "prod":
+					ip = new FileInputStream("./src/test/resources/config/config.properties");
+					break;
+				case "uat":
+					ip = new FileInputStream("./src/test/resources/config/uat.config.properties");
+					break;
+
+				default:
+					System.out.println("Please pass the right environment.... " + envName);
+					break;
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
 
 		try {
-			FileInputStream fis = new FileInputStream("./src/test/resources/config/config.properties");
-			prop.load(fis);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			prop.load(ip);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return prop;
+
 	}
 
+	public static String getScreenshot(String methodName) {
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshot/" + methodName + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(srcFile, destination);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
 }

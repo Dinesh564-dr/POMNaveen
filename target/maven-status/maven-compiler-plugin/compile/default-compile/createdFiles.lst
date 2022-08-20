@@ -1,0 +1,12 @@
+com\qa\opencart\pages\RegisterPage.class
+com\qa\opencart\pages\SearchResultsPage.class
+com\qa\opencart\listeners\TestAllureListener.class
+com\qa\opencart\utils\ElemenrUtil.class
+com\qa\opencart\utils\ExcelUtil.class
+com\qa\opencart\pages\LoginPage.class
+com\qa\opencart\factory\DriverFactory.class
+com\qa\opencart\listeners\ExtentReportListener.class
+com\qa\opencart\factory\OptionsManager.class
+com\qa\opencart\constants\AppConstants.class
+com\qa\opencart\pages\ProductInfoPage.class
+com\qa\opencart\pages\AccountsPage.class

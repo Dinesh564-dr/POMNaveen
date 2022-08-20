@@ -15,6 +15,7 @@ import com.qa.opencart.pages.RegisterPage;
 import com.qa.opencart.pages.SearchResultsPage;
 
 public class BaseTest {
+	//This is base test 
 
 	public WebDriver driver;
 	public DriverFactory df;
