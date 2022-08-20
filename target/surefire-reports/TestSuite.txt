@@ -1,0 +1,33 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 3, Errors: 0, Skipped: 3, Time elapsed: 27.345 s <<< FAILURE! - in TestSuite
+setup(com.qa.opencart.test.ProductSearchTest)  Time elapsed: 19.259 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: 
+timeout: Timed out receiving message from renderer: 9.329
+  (Session info: chrome=104.0.5112.80)
+Build info: version: '4.2.1', revision: 'ac4d0fdd4a'
+System info: host: 'DESKTOP-FB37VM8', ip: '192.168.1.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '15.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f605d7f98ff74ac2b0a8067b62fda565, get {url=https://naveenautomationlabs.com/opencart/index.php?route=account/login}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.80, chrome: {chromedriverVersion: 104.0.5112.79 (3cf3e8c8a07d..., userDataDir: C:\Users\dines\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:50140}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50140/devtoo..., se:cdpVersion: 104.0.5112.80, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: f605d7f98ff74ac2b0a8067b62fda565
+
+productInfoTest(com.qa.opencart.test.ProductSearchTest)  Time elapsed: 0.947 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentTest.skip(java.lang.Throwable, com.aventstack.extentreports.model.Media)" because the return value of "java.lang.ThreadLocal.get()" is null
+
+forgotPwdLinkExistTest(com.qa.opencart.test.LoginPageTest)  Time elapsed: 2.628 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.id: Forgotten Password (tried for 5 second(s) with 500 milliseconds interval)
+	at com.qa.opencart.test.LoginPageTest.forgotPwdLinkExistTest(LoginPageTest.java:27)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"#Forgotten\ Password"}
+  (Session info: chrome=104.0.5112.80)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.2.1', revision: 'ac4d0fdd4a'
+System info: host: 'DESKTOP-FB37VM8', ip: '192.168.1.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '15.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dd2af81a8f21c63c8be79be582df721d, findElement {using=id, value=Forgotten Password}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.80, chrome: {chromedriverVersion: 104.0.5112.79 (3cf3e8c8a07d..., userDataDir: C:\Users\dines\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:50138}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:50138/devtoo..., se:cdpVersion: 104.0.5112.80, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: dd2af81a8f21c63c8be79be582df721d
+	at com.qa.opencart.test.LoginPageTest.forgotPwdLinkExistTest(LoginPageTest.java:27)
+
