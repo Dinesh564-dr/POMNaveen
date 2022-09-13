@@ -30,6 +30,7 @@ public class BaseTest {
 
 	@BeforeTest
 	public void setup() {
+		System.out.println("inside setup method");
 		df = new DriverFactory();
 		prop = df.initprop();
 		driver = df.initDriver(prop);
